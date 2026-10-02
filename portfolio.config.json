@@ -20,12 +20,6 @@
       "description": "A silver spacecraft with swept wings, a turquoise canopy, a detailed cockpit, and a rear engine assembly.",
       "thumbnail": "/previews/silver-interceptor.png"
     },
-    "04_ARX4_Kestrel_Modular.glb": {
-      "name": "ARX-4 Kestrel — Modular",
-      "category": "Modular interceptor",
-      "description": "The modular Kestrel version, assembled from 25 separate parts including armor, wings, engines, and landing gear.",
-      "thumbnail": "/previews/kestrel-modular.png"
-    },
     "05_Aster_Walker.glb": {
       "name": "Aster Walker",
       "category": "Mechanical walker",

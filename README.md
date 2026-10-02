@@ -2,7 +2,7 @@
 
 A simple, responsive portfolio that lets visitors choose a model, rotate and zoom it, view its wireframe, use fullscreen, and share a link to that model. Built with Vite and Three.js, ready for Vercel.
 
-The collection includes six models: **Titan Aegis**, **ARX-4 Kestrel — Final**, **Silver Interceptor**, **ARX-4 Kestrel — Modular**, **Aster Walker**, and **BRV-7 Bulldog**. Each has a preview image and an interactive GLB file. Titan Aegis and the final Kestrel were exported from their Blender source files for the browser, with studio/backdrop objects excluded. BRV-7 Bulldog uses its supplied game-ready GLB with embedded PBR textures and the complete installed spacecraft. The source Blender files were left unchanged.
+The collection includes five models: **Titan Aegis**, **ARX-4 Kestrel — Final**, **Silver Interceptor**, **Aster Walker**, and **BRV-7 Bulldog**. Each has a preview image and an interactive GLB file. Titan Aegis and the final Kestrel were exported from their Blender source files for the browser, with studio/backdrop objects excluded. BRV-7 Bulldog uses its supplied game-ready GLB with embedded PBR textures and the complete installed spacecraft. The source Blender files were left unchanged.
 
 ## Add your models
 
