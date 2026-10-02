@@ -31,6 +31,12 @@
       "category": "Mechanical walker",
       "description": "A tripod walker with armored bodywork, articulated leg assemblies, and exposed mechanical detail.",
       "thumbnail": "/previews/aster-walker.png"
+    },
+    "06_BRV7_Bulldog.glb": {
+      "name": "BRV-7 Bulldog",
+      "category": "Heavy strike gunship",
+      "description": "A modular heavy strike spacecraft with twin engines, a detailed cockpit, deployed landing gear, cannons, and missile pods.",
+      "thumbnail": "/previews/brv7-bulldog.png"
     }
   }
 }

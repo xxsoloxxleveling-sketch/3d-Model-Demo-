@@ -46,6 +46,15 @@
       "format": "GLB",
       "url": "/models/05_Aster_Walker.glb",
       "thumbnail": "/previews/aster-walker.png"
+    },
+    {
+      "id": "06-brv7-bulldog-7368528a",
+      "name": "BRV-7 Bulldog",
+      "description": "A modular heavy strike spacecraft with twin engines, a detailed cockpit, deployed landing gear, cannons, and missile pods.",
+      "category": "Heavy strike gunship",
+      "format": "GLB",
+      "url": "/models/06_BRV7_Bulldog.glb",
+      "thumbnail": "/previews/brv7-bulldog.png"
     }
   ]
 }
