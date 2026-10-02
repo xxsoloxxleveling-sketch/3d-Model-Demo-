@@ -19,7 +19,7 @@ const icon = name => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
 const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 document.querySelector('#app').innerHTML = `
   <header class="site-header">
-    <a class="brand" href="/" aria-label="Portfolio home"><span class="brand-symbol">${icon('cube')}</span><span id="brand-name">SOLO</span><span class="brand-divider"></span><span class="brand-caption">3D PORTFOLIO</span></a>
+    <a class="brand" href="/" aria-label="Portfolio home"><span class="brand-symbol">${icon('cube')}</span><span id="brand-name">Mahify</span><span class="brand-divider"></span><span class="brand-caption">3D Portfolio</span></a>
     <a class="header-link" href="https://github.com/xxsoloxxleveling-sketch/3d-Model-Demo-" target="_blank" rel="noopener noreferrer">GitHub ${icon('arrow')}</a>
   </header>
   <main>
@@ -50,7 +50,7 @@ document.querySelector('#app').innerHTML = `
       <div class="details-right"><button class="share-button" id="share">${icon('share')} Share this view</button><p class="gesture-hint">Drag to rotate <span>·</span> Scroll to zoom <span>·</span> Right-drag to pan</p><p id="share-status" class="share-status" role="status" aria-live="polite"></p></div>
     </section>
   </main>
-  <footer><span><span id="footer-name">SOLO</span> <span class="footer-muted">/ 3D WORK</span></span><span class="footer-muted">A little perspective changes everything.</span><span class="footer-mark">${icon('cube')}</span></footer>
+  <footer><span><span id="footer-name">Mahify</span> <span class="footer-muted">/ 3D WORK</span></span><span class="footer-muted">A little perspective changes everything.</span><span class="footer-mark">${icon('cube')}</span></footer>
 `;
 
 const $ = selector => document.querySelector(selector);
