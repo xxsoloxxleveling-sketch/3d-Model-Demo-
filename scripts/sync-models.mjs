@@ -37,6 +37,7 @@ for (const path of files.filter(path => supported.has(extname(path).toLowerCase(
     category: override.category ?? '3D model',
     format: ext.slice(1).toUpperCase(),
     url: assetUrl(path),
+    ...(override.thumbnail ? { thumbnail: override.thumbnail } : {}),
     ...(mtlPath && ext.toLowerCase() === '.obj' ? { mtl: assetUrl(mtlPath) } : {}),
     ...(override.rotation ? { rotation: override.rotation } : {}),
   });

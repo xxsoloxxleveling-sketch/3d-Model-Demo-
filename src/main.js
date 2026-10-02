@@ -24,7 +24,7 @@ document.querySelector('#app').innerHTML = `
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
-      <div><p class="eyebrow"><span class="live-dot"></span> AN INTERACTIVE COLLECTION</p><h1 id="page-title">A closer <span>look.</span></h1></div>
+      <div><p class="eyebrow"><span class="live-dot"></span> SPACECRAFT & MECHANICAL MODELS</p><h1 id="page-title">The fleet, <span>in 3D.</span></h1></div>
       <p class="intro-copy" id="portfolio-description">A collection of 3D work.<br>Choose a model. Explore every angle.</p>
     </section>
     <div class="workspace">
@@ -60,6 +60,7 @@ let renderer, scene, camera, controls, grid, currentModel, mixer, environment;
 let catalog = [], currentEntry, loadGeneration = 0, wireframeEnabled = false, active = true;
 let needsFrame = true, cameraDistance = 5, rotationEnabled = false, modelRadius = 1.5;
 const modelCenter = new THREE.Vector3(0, 1.15, 0);
+const modelBounds = new THREE.Box3();
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const savedWireframe = new Map();
 let dracoLoader, ktx2Loader;
@@ -96,11 +97,11 @@ function setupViewer() {
   scene.environment = environment;
   room.dispose();
   pmrem.dispose();
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x5a685d, 2));
-  const key = new THREE.DirectionalLight(0xfff5e6, 3);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x59646b, 0.8));
+  const key = new THREE.DirectionalLight(0xffffff, 2);
   key.position.set(3, 5, 4);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xc3f36b, 1.5);
+  const rim = new THREE.DirectionalLight(0xa1c5ff, 1.5);
   rim.position.set(-4, 2, -3);
   scene.add(rim);
   grid = new THREE.GridHelper(12, 24, 0x435343, 0x303a31);
@@ -153,7 +154,22 @@ function resetView() {
   const horizontalFov = Math.atan(Math.tan(halfFov) * camera.aspect);
   cameraDistance = modelRadius / Math.sin(Math.min(halfFov, horizontalFov)) * 1.12;
   controls.target.copy(modelCenter);
-  camera.position.set(1, 0.55, 1.4).normalize().multiplyScalar(cameraDistance).add(controls.target);
+  const direction = new THREE.Vector3(1, 0.55, 1.4).normalize();
+  if (!modelBounds.isEmpty()) {
+    const right = new THREE.Vector3().crossVectors(camera.up, direction).normalize();
+    const up = new THREE.Vector3().crossVectors(direction, right).normalize();
+    let fittedDistance = 0;
+    for (const x of [modelBounds.min.x, modelBounds.max.x]) {
+      for (const y of [modelBounds.min.y, modelBounds.max.y]) {
+        for (const z of [modelBounds.min.z, modelBounds.max.z]) {
+          const corner = new THREE.Vector3(x, y, z).sub(modelCenter);
+          fittedDistance = Math.max(fittedDistance, corner.dot(direction) + Math.max(Math.abs(corner.dot(right)) / Math.tan(horizontalFov), Math.abs(corner.dot(up)) / Math.tan(halfFov)));
+        }
+      }
+    }
+    cameraDistance = fittedDistance * 1.15;
+  }
+  camera.position.copy(direction).multiplyScalar(cameraDistance).add(controls.target);
   camera.near = 0.01;
   camera.far = Math.max(100, cameraDistance * 10);
   camera.updateProjectionMatrix();
@@ -288,6 +304,7 @@ async function selectModel(entry) {
     currentModel = wrapper;
     scene.add(wrapper);
     const fittedBox = new THREE.Box3().setFromObject(wrapper);
+    modelBounds.copy(fittedBox);
     modelRadius = fittedBox.getBoundingSphere(new THREE.Sphere()).radius;
     fittedBox.getCenter(modelCenter);
     if (result.animations.length) {
@@ -369,7 +386,7 @@ async function init() {
       await selectModel({ id: 'viewer-preview', name: 'Viewer preview', description: 'An example shape to try the viewer. This is a demo, not portfolio work.', category: 'INTERACTIVE DEMO', demo: true });
       return;
     }
-    $('#model-list').innerHTML = catalog.map((entry, index) => `<button class="model-card" data-model="${escapeHtml(entry.id)}" aria-pressed="false"><span class="model-number">${String(index + 1).padStart(2, '0')}</span><span class="model-card-info"><span class="model-card-title">${escapeHtml(entry.name)}</span><span class="model-card-meta">${escapeHtml(entry.category)} <span>·</span> ${escapeHtml(entry.format)}</span></span><span class="model-card-arrow">${icon('arrow')}</span></button>`).join('');
+    $('#model-list').innerHTML = catalog.map((entry, index) => `<button class="model-card" data-model="${escapeHtml(entry.id)}" aria-pressed="false">${entry.thumbnail ? `<img class="model-thumbnail" src="${escapeHtml(entry.thumbnail)}" alt="" width="52" height="52" loading="lazy" />` : `<span class="model-number">${String(index + 1).padStart(2, '0')}</span>`}<span class="model-card-info"><span class="model-card-title">${escapeHtml(entry.name)}</span><span class="model-card-meta">${escapeHtml(entry.category)} <span>·</span> ${escapeHtml(entry.format)}</span></span><span class="model-card-arrow">${icon('arrow')}</span></button>`).join('');
     const requested = new URLSearchParams(location.search).get('model');
     await selectModel(catalog.find(entry => entry.id === requested) ?? catalog[0]);
   } catch (error) {

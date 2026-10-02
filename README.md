@@ -2,7 +2,7 @@
 
 A simple, responsive portfolio that lets visitors choose a model, rotate and zoom it, view its wireframe, use fullscreen, and share a link to that model. Built with Vite and Three.js, ready for Vercel.
 
-**The repository started empty. Until you add your own models, the site shows one explicitly labeled demo shape. It is not presented as your portfolio work.**
+The collection includes five models: **Titan Aegis**, **ARX-4 Kestrel — Final**, **Silver Interceptor**, **ARX-4 Kestrel — Modular**, and **Aster Walker**. Each has a preview image and an interactive GLB file. Titan Aegis and the final Kestrel were exported from their Blender source files for the browser, with studio/backdrop objects excluded. The source Blender files were left unchanged.
 
 ## Add your models
 
@@ -37,7 +37,8 @@ Edit `portfolio.config.json`. Model overrides use paths relative to `public/mode
     "character.glb": {
       "name": "Character study",
       "category": "Character",
-      "description": "A stylized character modeled and textured in Blender."
+      "description": "A stylized character modeled and textured in Blender.",
+      "thumbnail": "/previews/character.png"
     },
     "sculpture/sculpture.obj": {
       "name": "Sculpture",

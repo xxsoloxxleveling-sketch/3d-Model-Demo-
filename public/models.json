@@ -1,5 +1,51 @@
 {
   "name": "SOLO",
-  "description": "A collection of 3D work. Choose a model and explore it from every angle.",
-  "models": []
+  "description": "Spacecraft, interceptors, and a mechanical walker. Choose a model and explore every detail.",
+  "models": [
+    {
+      "id": "01-titan-aegis-f79bb978",
+      "name": "Titan Aegis",
+      "description": "A capital ship with layered hull armor, a command citadel, recessed hangars, and twin ion nacelles.",
+      "category": "Capital ship",
+      "format": "GLB",
+      "url": "/models/01_Titan_Aegis.glb",
+      "thumbnail": "/previews/titan-aegis.png"
+    },
+    {
+      "id": "02-arx4-kestrel-final-2f849515",
+      "name": "ARX-4 Kestrel — Final",
+      "description": "The detailed Kestrel with swept wings, twin engines, underwing missiles, and extended landing gear.",
+      "category": "Interceptor",
+      "format": "GLB",
+      "url": "/models/02_ARX4_Kestrel_Final.glb",
+      "thumbnail": "/previews/kestrel-final.jpg"
+    },
+    {
+      "id": "03-silver-interceptor-11c61310",
+      "name": "Silver Interceptor",
+      "description": "A silver spacecraft with swept wings, a turquoise canopy, a detailed cockpit, and a rear engine assembly.",
+      "category": "Spacecraft",
+      "format": "GLB",
+      "url": "/models/03_Silver_Interceptor.glb",
+      "thumbnail": "/previews/silver-interceptor.png"
+    },
+    {
+      "id": "04-arx4-kestrel-modular-c2616131",
+      "name": "ARX-4 Kestrel — Modular",
+      "description": "The modular Kestrel version, assembled from 25 separate parts including armor, wings, engines, and landing gear.",
+      "category": "Modular interceptor",
+      "format": "GLB",
+      "url": "/models/04_ARX4_Kestrel_Modular.glb",
+      "thumbnail": "/previews/kestrel-modular.png"
+    },
+    {
+      "id": "05-aster-walker-1daeafb8",
+      "name": "Aster Walker",
+      "description": "A tripod walker with armored bodywork, articulated leg assemblies, and exposed mechanical detail.",
+      "category": "Mechanical walker",
+      "format": "GLB",
+      "url": "/models/05_Aster_Walker.glb",
+      "thumbnail": "/previews/aster-walker.png"
+    }
+  ]
 }
